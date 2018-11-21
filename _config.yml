@@ -18,8 +18,6 @@ paginate_path: "/page/:num"
 
 # html 压缩
 compress_html:
-  ignore: 
-    envs: ['a']
   clippings: all
   comments: ["<!--", "-->"]
   endings: all
