@@ -8,7 +8,7 @@ description: >
 permalink: /:title.html
 
 google_analytics:
-baidu_analytics: 233
+baidu_analytics: 
 disqus: 
 
 markdown: kramdown
