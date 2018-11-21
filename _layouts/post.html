@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div class="container post-header">
+	<div class="title">
+		<a class="title" alt="{{ page.title }}" title="{{ page.title }}" href="{{ page.url }}">
+			# {{ page.title }}
+		</a>
+	</div>
+	<div class="post-nav">
+		<nav class="breadcrumb" aria-label="breadcrumbs">
+			<ul>
+				<li>
+					<a href="/">
+						<span>首页</span>
+					</a>
+				</li>
+				<li>
+					<a href="/{{ page.class }}.html">
+						<span>{{ site.data.categories.titles[page.class] }}</span>
+					</a>
+				</li>
+				<li class="is-active">
+					<a href="#" aria-current="page">
+						{% assign subclass = page.categories[0] %}
+						<span>{{ site.data.categories.titles[subclass] }}</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="light-line"></div>
+</div>
+<div class="container post">
+	<div class="columns">
+		<div class="column is-12">
+			<div class="post-content">
+				<div class="toc-switch">
+					<a id="toc" class="button is-dark">显示目录</a>
+				</div>
+				<div class="content">
+					{{ content }}
+				</div>
+				<div>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

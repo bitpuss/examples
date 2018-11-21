@@ -1,0 +1,51 @@
+<section class="is-header">
+	<div class="container">
+		<nav class="navbar">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="/">
+					<img src="/static/images/a.svg" width="28" height="28">
+					<strong class="navbar-item is-tagline">
+						CodeBox
+					</strong>
+				</a>
+			</div>
+
+			<div id="navbar-default" class="navbar-menu">
+				<div class="navbar-end">
+					<span class="navbar-item">
+						<a class="is-link {% if page.path == 'index.html'%}is-active{% endif %}" href="/">
+							首页
+						</a>
+					</span>
+
+					<span class="navbar-item">
+						<a class="is-link {% if page.path == 'about.md'%}is-active{% endif %}" href="/about.html">
+							关于
+						</a>
+					</span>
+
+					<span class="navbar-item is-twitter">
+						<a href="https://twitter.com/biezhii" target="_blank" title="Twitter" rel="nofollow">
+							<span class="icon has-text-info">
+								<i class="fab fa-twitter"></i>
+							</span>
+						</a>
+					</span>
+					<span class="navbar-item is-github">
+						<a href="https://github.com/biezhi" target="_blank" title="Github" rel="nofollow">
+							<span class="icon has-text-success">
+								<i class="fab fa-github"></i>
+							</span>
+						</a>
+
+					</span>
+				</div>
+			</div>
+			<!-- <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-default">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a> -->
+		</nav>
+	</div>
+</section>

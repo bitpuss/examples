@@ -1,0 +1,87 @@
+---
+layout: default
+---
+
+<div class="container" style="background-color: #fff;  margin-bottom: 50px;    -webkit-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.75);
+-moz-box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.75);
+box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.75);">
+	<div class="columns" style="border-radius: 10px;">
+		<div class="column is-3" style="padding-top:0; padding-bottom:0;">
+			<article class="message is-info" style="border-radius:0;">
+				<div class="message-header" style="border-radius:0;">
+					<p class="title" style="color:#fff;">
+						{{ page.title }}
+					</p>
+				</div>
+				<div class="message-body">
+					<aside class="bd-side">
+						<nav id="categories" class="bd-categories">
+							{% for item in site.data.categories[page.class] %}
+							<div class="bd-category ">
+								<header class="bd-category-header">
+									<a class="bd-category-toggle">
+										<span class="icon">
+											<svg class="svg-inline--fa fa-chevron-down fa-w-14" aria-hidden="true" data-prefix="fas" data-icon="chevron-down"
+											 role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+												<path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
+											</svg>
+										</span>
+									</a>
+									<a class="bd-category-name " href="https://bulma.io/documentation/overview">
+										<strong>&equiv; {{ site.data.categories.titles[item] }}</strong>
+									</a>
+								</header>
+
+								<ul class="bd-category-list">
+									{% for cat in site.categories %}
+
+									{% if cat[0] == item %}
+									{% for post in cat[1] %}
+									<li>
+										<a href="{{ post.url }}">
+											{{ post.title }}
+										</a>
+									</li>
+									{% endfor %}
+									{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+							{% endfor %}
+						</nav>
+					</aside>
+				</div>
+			</article>
+		</div>
+		<div class="column" style="padding:0 2rem;">
+			<nav class="breadcrumb" aria-label="breadcrumbs" style="padding: 20px 0;">
+				<ul>
+					<li><a href="/" style="color:#333;"><span class="icon is-small"><i class="fas fa-home"></i></span><span>首页</span></a></li>
+					<li class="is-active"><a href="#" aria-current="page"><span>{{ page.title }}</span></a></li>
+				</ul>
+			</nav>
+			<div class="content">
+				<div class="content category-content">
+					<ul>
+						{% for item in site.posts %}
+						{% if item.class == page.class %}
+						<li style="display: flex;">
+							<div>
+								<span class="meta">
+									发布于: 2018年10月29日
+								</span>
+							</div>
+							&nbsp;&nbsp;
+							<div>
+								{% assign subclass = item.categories[0] %}
+								<a href="{{ item.url }}">{{ site.data.categories.titles[subclass] }} - {{ item.title }}</a>
+							</div>
+						</li>
+						{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

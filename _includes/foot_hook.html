@@ -1,0 +1,46 @@
+{% if page.path == "index.html" %}
+<script>
+	new Typed('.typed-title .subtitle', {
+		strings: ['这里有很多盒子', '盒子放在这里永远只是盒子。', '拿走它们，写代码不求人！'],
+		typeSpeed: 90,
+		startDelay: 100,
+		loopCount: Infinity
+	});
+
+</script>{% endif %}
+{% if page.layout == "post" %}
+<script src="{{ '/static/js/highlight.min.js' | prepend: site.cdnurl }}"></script>
+<script src="{{ '/static/js/highlightjs-copy-button.js' | prepend: site.cdnurl }}"></script>
+<script src="/static/js/autoToc.js"></script>
+<script>
+	$('.post-content #toc').toc({
+		selectors: 'h1, h2, h3',
+		container: $('.post-content .content'),
+		status: true,
+		onOpen: function (list) {
+			var $html = $(
+				'<div class="toc-wrapper"><h4 class="is-4">文章概览</h4><div class="toc-list"></div></div>'
+			);
+			$html.find('.toc-list').html(list);
+			$('.post-content .content').before($html);
+			$(this).text('隐藏目录');
+		},
+		onClose: function () {
+			$('.toc-wrapper').remove();
+			$(this).text('显示目录');
+		}
+	});
+
+	$('.content h1,h2,h3,h4').mouseover(function (e) {
+		$(this).find('a').css('opacity', 1);
+	});
+
+	$('.content h1,h2,h3,h4').mouseleave(function (e) {
+		$(this).find('a').css('opacity', 0);
+	});
+
+	hljs.initHighlightingOnLoad();
+	hljs.initCopyButtonOnLoad();
+
+</script>
+{% endif %}

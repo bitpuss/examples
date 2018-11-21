@@ -1,0 +1,148 @@
+---
+layout: post
+title: Go DES 加解密示例
+permalink: go-encrypt/golang-des-example.html
+class: golang
+categories: ['go-encrypt']
+---
+
+Golang 实现 `DES`、`3DES` 加解密示例
+
+```go
+package main
+
+import (
+    "bytes"
+    "crypto/cipher"
+    "crypto/des"
+    "encoding/base64"
+    "fmt"
+)
+
+func main() {
+    // DES 加解密
+    testDes()
+    // 3DES加解密
+    test3Des()
+}
+
+func testDes() {
+    key := []byte("1iwuajqu")
+    result, err := DesEncrypt([]byte("longlongtextlongtesttagshjasjas asaasldksd"), key)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(base64.StdEncoding.EncodeToString(result))
+    origData, err := DesDecrypt(result, key)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(string(origData))
+}
+
+func test3Des() {
+    key := []byte("quwiajskliwos981kajxiwls")
+    result, err := TripleDesEncrypt([]byte("longlongtextlongtesttagshjasjas asaasldksd2"), key)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(base64.StdEncoding.EncodeToString(result))
+    origData, err := TripleDesDecrypt(result, key)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(string(origData))
+}
+
+func DesEncrypt(origData, key []byte) ([]byte, error) {
+    block, err := des.NewCipher(key)
+    if err != nil {
+        return nil, err
+    }
+    origData = PKCS5Padding(origData, block.BlockSize())
+    // origData = ZeroPadding(origData, block.BlockSize())
+    blockMode := cipher.NewCBCEncrypter(block, key)
+    crypted := make([]byte, len(origData))
+    // 根据CryptBlocks方法的说明，如下方式初始化crypted也可以
+    // crypted := origData
+    blockMode.CryptBlocks(crypted, origData)
+    return crypted, nil
+}
+
+func DesDecrypt(crypted, key []byte) ([]byte, error) {
+    block, err := des.NewCipher(key)
+    if err != nil {
+        return nil, err
+    }
+    blockMode := cipher.NewCBCDecrypter(block, key)
+    origData := make([]byte, len(crypted))
+    // origData := crypted
+    blockMode.CryptBlocks(origData, crypted)
+    origData = PKCS5UnPadding(origData)
+    // origData = ZeroUnPadding(origData)
+    return origData, nil
+}
+
+// 3DES加密
+func TripleDesEncrypt(origData, key []byte) ([]byte, error) {
+    block, err := des.NewTripleDESCipher(key)
+    if err != nil {
+        return nil, err
+    }
+    origData = PKCS5Padding(origData, block.BlockSize())
+    // origData = ZeroPadding(origData, block.BlockSize())
+    blockMode := cipher.NewCBCEncrypter(block, key[:8])
+    crypted := make([]byte, len(origData))
+    blockMode.CryptBlocks(crypted, origData)
+    return crypted, nil
+}
+
+// 3DES解密
+func TripleDesDecrypt(crypted, key []byte) ([]byte, error) {
+    block, err := des.NewTripleDESCipher(key)
+    if err != nil {
+        return nil, err
+    }
+    blockMode := cipher.NewCBCDecrypter(block, key[:8])
+    origData := make([]byte, len(crypted))
+    // origData := crypted
+    blockMode.CryptBlocks(origData, crypted)
+    origData = PKCS5UnPadding(origData)
+    // origData = ZeroUnPadding(origData)
+    return origData, nil
+}
+
+func ZeroPadding(ciphertext []byte, blockSize int) []byte {
+    padding := blockSize - len(ciphertext)%blockSize
+    padtext := bytes.Repeat([]byte{0}, padding)
+    return append(ciphertext, padtext...)
+}
+
+func ZeroUnPadding(origData []byte) []byte {
+    return bytes.TrimRightFunc(origData, func(r rune) bool {
+        return r == rune(0)
+    })
+}
+
+func PKCS5Padding(ciphertext []byte, blockSize int) []byte {
+    padding := blockSize - len(ciphertext)%blockSize
+    padtext := bytes.Repeat([]byte{byte(padding)}, padding)
+    return append(ciphertext, padtext...)
+}
+
+func PKCS5UnPadding(origData []byte) []byte {
+    length := len(origData)
+    // 去掉最后一个字节 unpadding 次
+    unpadding := int(origData[length-1])
+    return origData[:(length - unpadding)]
+}
+```
+
+输出结果：
+
+```shell
+B9PNmb6hMvLqNAMAcbciVSpTrmzcTp7xQXkYO7BCXB52G0n2SBMELVHM6KxBvvVp
+longlongtextlongtesttagshjasjas asaasldksd
+aewJbs1kNZjG9Yc8ZGNsZqCSSxvPGz3L2UXEJIQ4xfg6YxC3MzrshdivmuRsIZeC
+longlongtextlongtesttagshjasjas asaasldksd2
+```

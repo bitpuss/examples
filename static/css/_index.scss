@@ -1,0 +1,144 @@
+.codebox-logo {
+	font: 5em/1 Open Sans, Impact;
+}
+
+.typed-title {
+	display: flex;
+	justify-content: center;
+	height: 50px;
+}
+
+.typed-title .subtitle {
+	color: $secondaryColor;
+}
+
+.typed-cursor {
+	opacity: 1;
+	animation: typedjsBlink 0.7s infinite;
+	-webkit-animation: typedjsBlink 0.7s infinite;
+	animation: typedjsBlink 0.7s infinite;
+	margin-top: -5px;
+	font-size: 35px;
+	color: $lightColor;
+}
+
+.cover {
+	padding: 1rem 0 4rem 0;
+}
+
+.cover .cover-item {
+	width: 360px;
+	height: 240px;
+	background-size: cover;
+	border-radius: 10px;
+	cursor: pointer;
+	-webkit-box-shadow: 4px 4px 7px rgba(49, 47, 47, 0.15);
+	box-shadow: 4px 4px 7px rgba(49, 47, 47, 0.15);
+
+	-webkit-transition: .25s ease-in-out;
+	transition: .25s ease-in-out;
+}
+
+.cover .cover-item:hover {
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
+}
+
+.cover .cover-item>.overlay {
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: $bgColor;
+	height: 100%;
+	opacity: 0;
+	color: $primaryColor;
+	-webkit-transition: .45s ease-in-out;
+	transition: .45s ease-in-out;
+}
+
+.cover .cover-item>.overlay:hover {
+	opacity: .9;
+}
+
+/* Main styles */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+.text {
+	fill: none;
+	stroke-width: 3;
+	stroke-linejoin: round;
+	stroke-dasharray: 70 330;
+	stroke-dashoffset: 0;
+	-webkit-animation: stroke 6s infinite linear;
+	animation: stroke 6s infinite linear;
+}
+
+.text:nth-child(5n + 1) {
+	stroke: #f2385a;
+	-webkit-animation-delay: -1.2s;
+	animation-delay: -1.2s;
+}
+
+.text:nth-child(5n + 2) {
+	stroke: #f5a503;
+	-webkit-animation-delay: -2.4s;
+	animation-delay: -2.4s;
+}
+
+.text:nth-child(5n + 3) {
+	stroke: #e9f1df;
+	-webkit-animation-delay: -3.6s;
+	animation-delay: -3.6s;
+}
+
+.text:nth-child(5n + 4) {
+	stroke: #56d9cd;
+	-webkit-animation-delay: -4.8s;
+	animation-delay: -4.8s;
+}
+
+.text:nth-child(5n + 5) {
+	stroke: #3aa1bf;
+	-webkit-animation-delay: -6s;
+	animation-delay: -6s;
+}
+
+@-webkit-keyframes stroke {
+	100% {
+		stroke-dashoffset: -400;
+	}
+}
+
+@keyframes stroke {
+	100% {
+		stroke-dashoffset: -400;
+	}
+}
+
+@keyframes typedjsBlink {
+	50% {
+		opacity: 0.0;
+	}
+}
+
+@-webkit-keyframes typedjsBlink {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.typed-fade-out {
+	opacity: 0;
+	transition: opacity .25s;
+	-webkit-animation: 0;
+	animation: 0;
+}

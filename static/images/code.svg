@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+    <g>
+        <rect x="2.5" y="3.5" style="fill:#424E5C;" width="35" height="33"></rect>
+        <g>
+            <path style="fill:#AFC5D8;" d="M37,4v32H3V4H37 M38,3H2v34h36V3L38,3z"></path>
+        </g>
+    </g>
+    <g>
+        <rect x="2" y="3" style="fill:#AFC5D8;" width="36" height="6"></rect>
+    </g>
+    <rect x="12.8" y="21.5" transform="matrix(0.3477 -0.9376 0.9376 0.3477 -7.5813 33.1028)" style="fill:#BAE0BD;" width="14.4" height="1"></rect>
+    <polygon style="fill:#BAE0BD;" points="13.9,27.2 8,22 13.9,16.8 14.6,17.5 9.5,22 14.6,26.5 "></polygon>
+    <polygon style="fill:#BAE0BD;" points="26.1,27.2 25.4,26.5 30.5,22 25.4,17.6 26.1,16.8 32,22 "></polygon>
+</svg>

@@ -1,0 +1,65 @@
+titles:
+  java: Java
+  python: Python
+  golang: Golang
+  java-json: JSON 操作
+  java-logging: 日志操作
+  java-xml: XML 操作
+  java-email: 发送邮件
+  java-http: HTTP 请求
+  java-ftp: FTP 上传下载
+  java-java8: Java 8
+  java-reflect: Java 反射
+  java-network: Java 网络编程
+  java-exception: 异常处理
+  java-annotation: Java 注解
+  java-collections: 集合操作
+  java-encrypt: Java 加解密
+  java-template: 模板引擎
+  java-orm: ORM 操作
+  java-compress: Java 解压缩
+  java-date: 日期操作
+  java-configuration: 配置文件
+  java-best-practices: 最佳实践
+  go-json: JSON 解析
+  go-http: HTTP 请求
+  go-configuration: 配置文件
+  go-basic: Go 基础
+  go-database: Go 数据库
+  go-encrypt: Go 加解密
+  go-log: Go 日志输出
+  go-email: Go 发送邮件
+  go-middleware: Go 中间件
+  go-best-practices: 最佳实践
+
+java:
+  - java-json
+  - java-logging
+  - java-xml
+  - java-email
+  - java-http
+  - java-ftp
+  - java-java8
+  - java-collections
+  - java-date
+  - java-configuration
+  - java-template
+  - java-orm
+  - java-reflect
+  - java-annotation
+  - java-encrypt
+  - java-network
+  - java-compress
+  - java-best-practices
+  
+
+golang:
+  - go-json
+  - go-http
+  - go-configuration
+  - go-basic
+  - go-database
+  - go-encrypt
+  - go-log
+  - go-email
+  - go-best-practices

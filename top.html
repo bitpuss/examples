@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>js回到顶部</title>
+	<style media="screen">
+		body, html {
+        margin: 0;
+        padding: 0;
+      }
+      #box {
+        width: 1190px;
+        margin: 0 auto;
+      }
+      #box > div {
+        background-color: #eee;
+        height: 10000px;
+      }
+      #btn {
+        height: 30px;
+        line-height: 30px;
+        width: 100px;
+        background-color: #eee;
+        position: fixed;
+        right: 0px;
+        bottom: 40px;
+        display: none;
+        -webkit-transition: background-color 1s;
+        -o-transition: background-color 1s;
+        transition: background-color 1s;
+      }
+      #btn:hover {
+        background-color: #ff0;
+        cursor: pointer;
+      }
+    </style>
+</head>
+
+<body>
+	<div id="box">
+		<div>占位</div>
+	</div>
+	<div id="btn">回到顶部</div>
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		var obtn = document.getElementById('btn');
+		// 定时器
+		var timer = null;
+		// 获取页面的可视窗口高度
+		var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		obtn.onclick = function () {
+			var osTop = 0;
+			var speed = 0;
+			timer = setInterval(function () {
+				isScroll = true;
+				// 距内容区最顶部的距离
+				osTop = document.documentElement.scrollTop || document.body.scrollTop;
+				// 改变回到顶部的速度（越来越慢）
+				speed = Math.ceil(-osTop / 1.05);
+				document.body.scrollTop = document.documentElement.scrollTop -= (osTop + speed);
+				if (speed == 0) {
+					clearInterval(timer);
+					isScroll = false;
+				}
+			}, 30);
+		};
+		// 监听鼠标滑轮的滚动事件
+		window.onmousewheel = function () {
+			clearInterval(timer);
+		};
+		// 页面滚动时增加判断，超出页面可视化高度时显示回到顶部的按钮
+		window.onscroll = function () {
+			var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+			if (osTop > clientHeight) {
+				obtn.style.display = 'block';
+			} else {
+				obtn.style.display = 'none';
+			}
+		};
+	};
+
+</script>
+
+</html>

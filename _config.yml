@@ -1,0 +1,38 @@
+title: Code So Fun
+url: https://examples.codesofun.com
+baseurl: ''
+cdnurl: 'https://code-1251171175.cos.ap-shanghai.myqcloud.com'
+description: >
+   写代码，真香！
+
+permalink: /:title.html
+
+google_analytics:
+baidu_analytics: 233
+disqus: 
+
+markdown: kramdown
+highlighter: rouge
+paginate: 12
+paginate_path: "/page/:num"
+
+# html 压缩
+compress_html:
+  ignore: 
+    envs: ['a']
+  clippings: all
+  comments: ["<!--", "-->"]
+  endings: all
+  startings: [html, head, body]
+
+# sass 解析
+sass:
+  sass_dir: static/css
+  style: compressed
+
+# 插件
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
